@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Lumis Star</title>
+  <desc id="desc">Emblema circular vinho com monograma LS, estrelas e letras douradas.</desc>
+  <defs>
+    <radialGradient id="wine" cx="48%" cy="38%" r="72%">
+      <stop offset="0" stop-color="#531827"/>
+      <stop offset=".7" stop-color="#3B101C"/>
+      <stop offset="1" stop-color="#260811"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF0D6"/>
+      <stop offset=".22" stop-color="#C99A69"/>
+      <stop offset=".48" stop-color="#FFF3D9"/>
+      <stop offset=".72" stop-color="#B77C50"/>
+      <stop offset="1" stop-color="#F4D8AE"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="512" cy="512" r="475" fill="url(#wine)"/>
+  <circle cx="512" cy="512" r="474" fill="none" stroke="url(#gold)" stroke-opacity=".32" stroke-width="2"/>
+
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round">
+    <path d="M300 444C277 320 334 205 443 153c68-33 151-39 221-15" stroke-width="4"/>
+    <path d="M306 451c9 83 44 151 94 192" stroke-width="4"/>
+    <path d="M718 250c20 64 25 129 14 187-18 99-65 165-143 195" stroke-width="3"/>
+    <path d="M354 541c24-46 76-58 133-28l87 46c70 37 132 24 176-35" stroke-width="4"/>
+  </g>
+
+  <text x="509" y="493" text-anchor="middle" font-family="Bodoni 72, Didot, 'Times New Roman', serif" font-size="325" letter-spacing="-24" fill="url(#gold)" stroke="#F6D8B3" stroke-opacity=".32" stroke-width="2">LS</text>
+
+  <g fill="url(#gold)">
+    <path d="M650 199l8 37 37 8-37 8-8 37-8-37-37-8 37-8z" filter="url(#glow)"/>
+    <path d="M329 313l4 18 18 4-18 4-4 18-4-18-18-4 18-4z"/>
+    <path d="M700 402l5 22 22 5-22 5-5 22-5-22-22-5 22-5z"/>
+    <path d="M512 876l5 23 23 5-23 5-5 23-5-23-23-5 23-5z"/>
+  </g>
+
+  <text x="390" y="680" text-anchor="middle" font-family="Bodoni 72, Didot, 'Times New Roman', serif" font-size="120" letter-spacing="10" fill="url(#gold)">LUMIS ST</text>
+  <path d="M800 605l11 39 39 11-39 11-11 39-11-39-39-11 39-11z" fill="url(#gold)"/>
+  <text x="900" y="680" text-anchor="middle" font-family="Bodoni 72, Didot, 'Times New Roman', serif" font-size="120" fill="url(#gold)">R</text>
+
+  <path d="M170 722h684" stroke="url(#gold)" stroke-opacity=".7" stroke-width="2"/>
+  <text x="512" y="780" text-anchor="middle" font-family="Jost, 'Helvetica Neue', sans-serif" font-size="25" letter-spacing="9" fill="url(#gold)">BELEZA QUE REALÇA SUA ESSÊNCIA</text>
+
+  <g transform="translate(512 850)" fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+    <path d="M-59 4c19-24 39-24 59-5 20-19 40-19 59 5-18 28-38 39-59 39S-41 32-59 4Z"/>
+    <path d="M-49 7c18 3 32 11 49 25C17 18 31 10 49 7"/>
+  </g>
+  <path d="M210 853h185M629 853h185" stroke="url(#gold)" stroke-opacity=".6" stroke-width="2"/>
+  <text x="512" y="946" text-anchor="middle" font-family="Jost, 'Helvetica Neue', sans-serif" font-size="19" letter-spacing="6" fill="url(#gold)">BRILHO · CUIDADO · CONFIANÇA</text>
+</svg>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Minha conta | Lumis Star</title>
+  <meta name="description" content="Entre na sua conta Lumis Star para consultar seus pedidos.">
+  <meta name="theme-color" content="#4A0D1C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="account" class="bg-cream text-ink font-sans antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[70] focus:bg-ink focus:px-4 focus:py-2 focus:text-cream">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+  <main id="main" class="mx-auto min-h-[55vh] max-w-7xl px-4 py-12 sm:px-6 md:py-16">
+    <div id="account-content" role="status" aria-live="polite"><p class="text-sm text-ink/60">Carregando sua conta…</p></div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="assets/js/supabase-config.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Finalizar compra | Lumis Star</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F7F5F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="checkout" class="bg-cream text-ink font-sans antialiased">
+  <div id="site-header"></div>
+
+  <main id="main" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 lg:py-10">
+    <h1 class="font-serif text-4xl sm:text-5xl mb-6 lg:mb-8">Finalizar compra</h1>
+
+    <div id="checkout-empty" hidden class="text-center py-20">
+      <p class="font-serif text-3xl">Sua sacola está vazia</p>
+      <p class="mt-2 text-ink/70">Adicione produtos para finalizar a compra.</p>
+      <a href="catalogo.html" class="btn btn-primary mt-8">Explorar produtos</a>
+    </div>
+
+    <!-- Resumo recolhível (mobile) -->
+    <div id="summary-mobile-wrap" class="lg:hidden mb-5 rounded-2xl bg-white border border-ink/10">
+      <button type="button" data-accordion aria-expanded="false" aria-controls="summary-mobile" class="w-full flex items-center justify-between gap-3 p-4 min-h-[56px]">
+        <span class="flex items-center gap-2 text-sm font-medium"><span data-icon="bag" class="w-5 h-5"></span> Ver resumo do pedido <span class="acc-icon transition-transform"><span data-icon="chevronD" class="w-4 h-4 block"></span></span></span>
+        <strong data-total class="text-lg font-medium tabular-nums"></strong>
+      </button>
+      <div id="summary-mobile" class="acc-panel"><div><div id="summary-mobile-list" data-summary class="px-4 pb-2 border-t border-ink/10"></div></div></div>
+    </div>
+
+    <form id="checkout-form" class="grid lg:grid-cols-[minmax(0,1fr)_400px] gap-5 lg:gap-10 items-start" novalidate>
+      <div class="space-y-5">
+        <!-- 1. Identificação -->
+        <section class="rounded-3xl bg-white border border-ink/10 p-5 sm:p-7" aria-labelledby="s1">
+          <h2 id="s1" class="flex items-center gap-3 font-serif text-2xl"><span class="w-8 h-8 rounded-full bg-ink text-cream grid place-items-center text-base font-sans">1</span> Identificação</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mt-5">
+            <div class="sm:col-span-2">
+              <label class="label" for="email">E-mail</label>
+              <input id="email" name="email" type="email" class="input" autocomplete="email" required placeholder="voce@email.com" aria-describedby="email-hint">
+              <p id="email-hint" class="hint">Enviaremos a confirmação e o código de rastreio por aqui.</p>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="label" for="name">Nome completo</label>
+              <input id="name" name="name" class="input" autocomplete="name" required minlength="5">
+            </div>
+            <div>
+              <label class="label" for="cpf">CPF</label>
+              <input id="cpf" name="cpf" data-mask="cpf" class="input" inputmode="numeric" required placeholder="000.000.000-00">
+            </div>
+            <div>
+              <label class="label" for="phone">Celular (WhatsApp)</label>
+              <input id="phone" name="phone" type="tel" data-mask="phone" class="input" autocomplete="tel-national" required placeholder="(00) 00000-0000">
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Entrega -->
+        <section class="rounded-3xl bg-white border border-ink/10 p-5 sm:p-7" aria-labelledby="s2">
+          <h2 id="s2" class="flex items-center gap-3 font-serif text-2xl"><span class="w-8 h-8 rounded-full bg-ink text-cream grid place-items-center text-base font-sans">2</span> Entrega</h2>
+          <div class="grid grid-cols-6 gap-4 mt-5">
+            <div class="col-span-6 sm:col-span-3">
+              <label class="label" for="ck-cep">CEP</label>
+              <div class="relative">
+                <input id="ck-cep" name="cep" data-mask="cep" class="input" inputmode="numeric" autocomplete="postal-code" required placeholder="00000-000" maxlength="9" aria-describedby="cep-msg">
+                <span id="cep-loading" hidden class="spinner absolute right-4 top-1/2 -mt-[9px]"></span>
+              </div>
+              <p id="cep-msg" class="hint" aria-live="polite"></p>
+            </div>
+            <div class="col-span-6">
+              <label class="label" for="street">Endereço</label>
+              <input id="street" name="street" class="input" autocomplete="address-line1" required>
+            </div>
+            <div class="col-span-2">
+              <label class="label" for="number">Número</label>
+              <input id="number" name="number" class="input" required>
+            </div>
+            <div class="col-span-4">
+              <label class="label" for="complement">Complemento <span class="font-normal text-ink/50">(opcional)</span></label>
+              <input id="complement" name="complement" class="input" autocomplete="address-line2">
+            </div>
+            <div class="col-span-6 sm:col-span-2">
+              <label class="label" for="district">Bairro</label>
+              <input id="district" name="district" class="input" required>
+            </div>
+            <div class="col-span-4 sm:col-span-3">
+              <label class="label" for="city">Cidade</label>
+              <input id="city" name="city" class="input" autocomplete="address-level2" required>
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <label class="label" for="uf">UF</label>
+              <input id="uf" name="uf" class="input uppercase" autocomplete="address-level1" required maxlength="2" pattern="[A-Za-z]{2}">
+            </div>
+          </div>
+          <div id="ship-wrap" class="mt-6" hidden>
+            <p class="label" id="ship-label">Forma de envio</p>
+            <div id="ship-options" class="space-y-2" role="radiogroup" aria-labelledby="ship-label"></div>
+          </div>
+        </section>
+
+        <!-- 3. Pagamento -->
+        <section class="rounded-3xl bg-white border border-ink/10 p-5 sm:p-7" aria-labelledby="s3">
+          <h2 id="s3" class="flex items-center gap-3 font-serif text-2xl"><span class="w-8 h-8 rounded-full bg-ink text-cream grid place-items-center text-base font-sans">3</span> Pagamento</h2>
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-5" role="radiogroup" aria-label="Forma de pagamento">
+            <label class="cursor-pointer">
+              <input type="radio" name="payment" value="pix" class="peer sr-only" checked>
+              <span class="flex flex-col items-center justify-center gap-1 min-h-[84px] rounded-2xl border border-ink/15 p-3 text-center transition peer-checked:border-ink peer-checked:ring-1 peer-checked:ring-ink peer-focus-visible:ring-2 peer-focus-visible:ring-leaf-dark">
+                <span data-icon="pix" class="w-6 h-6 text-leaf-dark"></span><span class="text-sm font-medium">Pix</span><span class="text-[11px] text-leaf-dark font-medium">5% OFF</span>
+              </span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="payment" value="card" class="peer sr-only">
+              <span class="flex flex-col items-center justify-center gap-1 min-h-[84px] rounded-2xl border border-ink/15 p-3 text-center transition peer-checked:border-ink peer-checked:ring-1 peer-checked:ring-ink peer-focus-visible:ring-2 peer-focus-visible:ring-leaf-dark">
+                <span data-icon="card" class="w-6 h-6"></span><span class="text-sm font-medium">Cartão</span><span class="text-[11px] text-ink/60">até 10x</span>
+              </span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="payment" value="boleto" class="peer sr-only">
+              <span class="flex flex-col items-center justify-center gap-1 min-h-[84px] rounded-2xl border border-ink/15 p-3 text-center transition peer-checked:border-ink peer-checked:ring-1 peer-checked:ring-ink peer-focus-visible:ring-2 peer-focus-visible:ring-leaf-dark">
+                <span data-icon="barcode" class="w-6 h-6"></span><span class="text-sm font-medium">Boleto</span><span class="text-[11px] text-ink/60">3 dias úteis</span>
+              </span>
+            </label>
+          </div>
+
+          <fieldset data-pay="pix" class="mt-5 rounded-2xl bg-leaf-light/60 p-4 text-sm leading-relaxed">
+            <legend class="sr-only">Pagamento via Pix</legend>
+            O QR Code e o código “copia e cola” serão exibidos após a finalização. Aprovação imediata e envio mais rápido.
+          </fieldset>
+
+          <!-- Produção: substitua por campos seguros do gateway (iframe/SDK de tokenização). Nunca envie o número do cartão ao seu servidor. -->
+          <fieldset data-pay="card" class="mt-5 grid grid-cols-2 gap-4" hidden disabled>
+            <legend class="sr-only">Dados do cartão de crédito</legend>
+            <div class="col-span-2">
+              <label class="label" for="card-number">Número do cartão</label>
+              <input id="card-number" data-mask="card" class="input" inputmode="numeric" autocomplete="cc-number" required placeholder="0000 0000 0000 0000">
+            </div>
+            <div class="col-span-2">
+              <label class="label" for="card-name">Nome impresso no cartão</label>
+              <input id="card-name" class="input uppercase" autocomplete="cc-name" required>
+            </div>
+            <div>
+              <label class="label" for="card-exp">Validade</label>
+              <input id="card-exp" data-mask="exp" class="input" inputmode="numeric" autocomplete="cc-exp" required placeholder="MM/AA">
+            </div>
+            <div>
+              <label class="label" for="card-cvc">CVV</label>
+              <input id="card-cvc" data-mask="cvc" class="input" inputmode="numeric" autocomplete="cc-csc" required placeholder="123">
+            </div>
+            <div class="col-span-2">
+              <label class="label" for="installments">Parcelamento</label>
+              <select id="installments" class="select w-full min-h-[52px] rounded-[.875rem]"></select>
+            </div>
+          </fieldset>
+
+          <fieldset data-pay="boleto" class="mt-5 rounded-2xl bg-cream p-4 text-sm leading-relaxed" hidden disabled>
+            <legend class="sr-only">Pagamento via boleto</legend>
+            O boleto será gerado após a finalização, com vencimento em 3 dias úteis. O pedido é enviado após a compensação (até 2 dias úteis).
+          </fieldset>
+        </section>
+      </div>
+
+      <!-- Resumo do pedido -->
+      <aside id="order-summary" class="lg:sticky lg:top-24 rounded-3xl bg-white border border-ink/10 p-5 sm:p-6" aria-labelledby="summary-title">
+        <h2 id="summary-title" class="font-serif text-2xl">Resumo do pedido</h2>
+        <div id="summary-desktop-list" data-summary class="hidden lg:block mt-2 max-h-[40vh] overflow-y-auto overscroll-contain -mx-1 px-1"></div>
+        <div id="ck-progress" class="mt-4 rounded-2xl bg-leaf-light/60 p-4"></div>
+        <div class="mt-5">
+          <label for="coupon" class="label">Cupom de desconto</label>
+          <div class="flex gap-2">
+            <input id="coupon" class="input uppercase" placeholder="Ex.: BEMVINDO10" autocomplete="off" maxlength="20">
+            <button type="button" id="coupon-apply" class="btn btn-outline btn-sm shrink-0 min-h-[52px]">Aplicar</button>
+          </div>
+          <p id="coupon-msg" class="hint" aria-live="polite"></p>
+        </div>
+        <dl id="totals" class="mt-5 space-y-2 text-sm"></dl>
+        <p id="checkout-error" role="alert" hidden class="mt-5 rounded-2xl bg-[#FBE9EB] text-[#9B2C3A] text-sm p-4"></p>
+        <button type="submit" id="place-order" class="btn btn-primary w-full mt-6 text-base"><span data-icon="lock" class="w-4 h-4"></span> Finalizar pedido</button>
+        <p class="mt-3 text-xs text-ink/60 text-center">Ao finalizar, você concorda com os <a href="#" class="underline">Termos de Uso</a> e a <a href="#" class="underline">Política de Privacidade</a>.</p>
+        <ul class="mt-5 grid grid-cols-3 gap-2 text-[11px] text-ink/70 text-center">
+          <li class="flex flex-col items-center gap-1"><span data-icon="lock" class="w-5 h-5 text-leaf-dark"></span>SSL seguro</li>
+          <li class="flex flex-col items-center gap-1"><span data-icon="shield" class="w-5 h-5 text-leaf-dark"></span>Dados protegidos</li>
+          <li class="flex flex-col items-center gap-1"><span data-icon="rotate" class="w-5 h-5 text-leaf-dark"></span>Troca em 30 dias</li>
+        </ul>
+      </aside>
+    </form>
+  </main>
+
+  <div id="success-modal" class="layer layer-fade fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="success-title" aria-hidden="true">
+    <div class="pointer-events-auto w-full max-w-md rounded-3xl bg-cream p-8 text-center shadow-2xl">
+      <span data-icon="check" class="block w-16 h-16 p-4 mx-auto rounded-full bg-leaf-light text-leaf-dark"></span>
+      <h2 id="success-title" class="font-serif text-3xl mt-5">Pedido confirmado!</h2>
+      <p id="success-text" class="mt-3 text-ink/75 leading-relaxed"></p>
+      <a href="index.html" class="btn btn-primary w-full mt-7" data-autofocus>Voltar para a loja</a>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="assets/js/supabase-config.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

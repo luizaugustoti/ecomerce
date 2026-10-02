@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Produto | Lumis Star</title>
+  <meta name="description" content="Descubra maquiagem, gloss e perfumes Lumis Star.">
+  <meta name="theme-color" content="#F7F5F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="product" class="bg-cream text-ink font-sans antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[70] focus:bg-ink focus:text-cream focus:px-4 focus:py-2 focus:rounded-full">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 py-6 lg:py-10">
+    <div id="pdp"></div>
+
+    <section id="rec-section" class="mt-20 md:mt-28" data-carousel aria-labelledby="rec-title">
+      <div class="flex items-end justify-between gap-4 mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[.3em] text-leaf-dark font-medium">Complete sua rotina</p>
+          <h2 id="rec-title" class="font-serif text-3xl sm:text-4xl mt-2">Quem comprou este produto também levou</h2>
+        </div>
+        <div class="hidden sm:flex gap-2">
+          <button type="button" data-prev class="carousel-btn" aria-label="Produtos anteriores"><span data-icon="chevronL" class="w-5 h-5"></span></button>
+          <button type="button" data-next class="carousel-btn" aria-label="Próximos produtos"><span data-icon="chevronR" class="w-5 h-5"></span></button>
+        </div>
+      </div>
+      <div id="recommendations" data-track class="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-px-4 sm:scroll-px-0 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-4"></div>
+    </section>
+  </main>
+
+  <!-- Barra de compra fixa (mobile) -->
+  <div id="sticky-buy" aria-hidden="true" class="lg:hidden fixed inset-x-0 bottom-0 z-30 translate-y-full transition-transform duration-300 bg-cream/95 backdrop-blur border-t border-ink/10 px-4 py-3 pb-[max(.75rem,env(safe-area-inset-bottom))] flex items-center gap-3">
+    <div id="sticky-art" class="w-12 h-12 shrink-0 rounded-lg overflow-hidden"></div>
+    <div class="flex-1 min-w-0">
+      <p id="sticky-name" class="text-sm font-medium truncate"></p>
+      <p id="sticky-price" class="text-sm text-ink/70"></p>
+    </div>
+    <button type="button" id="sticky-add" class="btn btn-primary btn-sm shrink-0">Adicionar</button>
+  </div>
+
+  <div id="site-footer" class="mt-20"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="assets/js/supabase-config.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

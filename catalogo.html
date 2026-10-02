@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Produtos | Lumis Star</title>
+  <meta name="description" content="Explore maquiagem, gloss, perfumes e kits Lumis Star.">
+  <meta name="theme-color" content="#F7F5F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="catalog" class="bg-cream text-ink font-sans antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[70] focus:bg-ink focus:text-cream focus:px-4 focus:py-2 focus:rounded-full">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 py-6 lg:py-10">
+    <nav aria-label="Trilha de navegação" class="text-sm text-ink/60">
+      <ol class="flex items-center gap-2">
+        <li><a href="index.html" class="hover:text-ink">Início</a></li>
+        <li aria-hidden="true">/</li>
+        <li id="crumb-current" aria-current="page" class="text-ink">Todos os produtos</li>
+      </ol>
+    </nav>
+    <header class="mt-4 mb-8">
+      <h1 id="catalog-title" class="font-serif text-4xl sm:text-5xl">Todos os produtos</h1>
+      <p id="catalog-desc" class="mt-2 text-ink/70 max-w-2xl"></p>
+    </header>
+
+    <div class="lg:grid lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-10">
+      <!-- Filtros: bottom-sheet no mobile, barra lateral no desktop -->
+      <aside id="filters" aria-labelledby="filters-title" aria-hidden="true"
+        class="layer layer-bottom lg-static fixed inset-x-0 bottom-0 z-50 max-h-[88vh] flex flex-col bg-cream rounded-t-3xl shadow-2xl
+               lg:sticky lg:inset-auto lg:top-28 lg:z-auto lg:max-h-[calc(100vh-8rem)] lg:rounded-none lg:shadow-none lg:bg-transparent lg:self-start">
+        <div class="flex items-center justify-between px-5 lg:px-0 h-16 lg:h-auto border-b border-ink/10 lg:border-0 shrink-0">
+          <h2 id="filters-title" class="font-serif text-2xl">Filtrar</h2>
+          <button type="button" class="icon-btn -mr-2 lg:hidden" data-close aria-label="Fechar filtros"><span data-icon="close" class="w-6 h-6"></span></button>
+        </div>
+        <form id="filter-form" class="flex-1 overflow-y-auto overscroll-contain px-5 lg:px-0 pb-4" aria-label="Filtros de produtos"></form>
+        <div class="shrink-0 grid grid-cols-2 gap-3 p-4 border-t border-ink/10 bg-cream lg:bg-transparent lg:px-0 lg:border-0">
+          <button type="button" id="filters-clear" class="btn btn-outline btn-sm">Limpar</button>
+          <button type="button" id="filters-apply" class="btn btn-primary btn-sm lg:hidden">Ver produtos</button>
+        </div>
+      </aside>
+
+      <section aria-labelledby="catalog-title">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <button type="button" data-open="#filters" aria-controls="filters" class="btn btn-outline btn-sm lg:hidden">
+            <span data-icon="filter" class="w-4 h-4"></span> Filtrar <span id="filter-count"></span>
+          </button>
+          <p id="result-count" class="hidden sm:block text-sm text-ink/70" aria-live="polite"></p>
+          <label class="flex items-center gap-2 text-sm">
+            <span class="hidden sm:inline text-ink/70">Ordenar por</span>
+            <select id="sort" class="select" aria-label="Ordenar produtos">
+              <option value="relevance">Mais vendidos</option>
+              <option value="price-asc">Menor preço</option>
+              <option value="price-desc">Maior preço</option>
+              <option value="newest">Lançamentos</option>
+              <option value="discount">Maior desconto</option>
+            </select>
+          </label>
+        </div>
+        <div id="active-chips" class="flex flex-wrap items-center gap-2 mb-6"></div>
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-10 sm:gap-x-6"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer" class="mt-16"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="assets/js/supabase-config.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
