@@ -466,16 +466,17 @@
         </div>
       </div>
       <div class="relative bg-cream/95 backdrop-blur border-b border-ink/10 transition-shadow" data-header-bar>
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 lg:h-20 grid grid-cols-[auto_1fr_auto] lg:flex items-center gap-2 lg:gap-10">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 lg:h-20 grid grid-cols-[auto_1fr_auto] lg:flex items-center gap-2 lg:gap-6 xl:gap-10">
           <div class="flex items-center lg:hidden">
             <button type="button" class="icon-btn" data-open="#mobile-menu" aria-label="Abrir menu" aria-controls="mobile-menu">${icon('menu', 'w-6 h-6')}</button>
             <button type="button" class="icon-btn header-search-mobile" data-toggle-search aria-label="Buscar" aria-controls="search-panel" aria-expanded="false">${icon('search', 'w-[22px] h-[22px]')}</button>
           </div>
           ${logo('justify-self-center')}
-          <nav aria-label="Principal" class="hidden lg:flex items-center gap-8 text-[15px]">
+          <nav aria-label="Principal" class="hidden lg:flex items-center gap-4 xl:gap-8 text-[15px]">
             ${NAV.map(n => `<a href="${n.href}" class="nav-link" ${n.cat && n.cat === currentCat ? 'aria-current="page"' : ''}>${n.label}</a>`).join('')}
           </nav>
           <div class="flex items-center justify-end gap-0.5 lg:ml-auto">
+            <a href="admin/index.html" class="btn btn-outline btn-sm header-admin shrink-0 mr-3" aria-label="Painel administrativo">Admin</a>
             <button type="button" class="icon-btn header-search-desktop" data-toggle-search aria-label="Buscar" aria-controls="search-panel" aria-expanded="false">${icon('search', 'w-[22px] h-[22px]')}</button>
             <a href="minha-conta.html" class="icon-btn header-account" aria-label="Minha conta">${icon('user', 'w-[22px] h-[22px]')}</a>
             <button type="button" class="icon-btn relative" data-open="#cart-drawer" data-cart-button aria-controls="cart-drawer">
@@ -541,6 +542,7 @@
             <button type="submit" class="icon-btn absolute right-1 top-1/2 -translate-y-1/2" aria-label="Buscar produtos">${icon('search')}</button>
           </form>
           <ul>${NAV.map(n => `<li><a href="${n.href}" class="flex items-center justify-between py-4 border-b border-ink/10 font-serif text-2xl" data-close-on-nav>${n.label}${icon('chevronR', 'w-5 h-5 text-ink/40')}</a></li>`).join('')}</ul>
+          <a href="admin/index.html" class="btn btn-outline btn-sm w-full mt-6" data-close-on-nav>Painel administrativo</a>
           <div class="mt-6 rounded-2xl bg-blush-light p-5">
             <p class="text-xs uppercase tracking-[.2em] text-blush-dark">Primeira compra?</p>
             <p class="font-serif text-2xl mt-1">10% OFF com o cupom <strong>BEMVINDO10</strong></p>
